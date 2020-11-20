@@ -1,5 +1,7 @@
 <div *ngFor='let member of members'>
   <p>{{member.name}}</p>
   <p>{{member.dni}}</p>
+  <button mat-button (click)='deleteRecord(member)'>Delete</button>
+  <button mat-button (click)='deleteRecord(member)'>Edit</button>
 </div>
 

@@ -18,13 +18,30 @@ export class MemberManagementComponent implements OnInit {
   ngOnInit(): void {
     this.members = members;
     this.formGroup = this.fb.group({
-      name:'John',
-      dni:'1234567'
+      name:'',
+      dni:''
     })
   }
 
   recibir(member){
-    this.members.push(member);
+    if (this.members.some(e => e.dni === member.dni)){
+      this.members.splice(this.members.findIndex(e=>e.dni==member.dni),1,member);
+    }else{
+      this.members.push(member);
+    }
+
+    this.formGroup.controls['dni'].enable();
+  }
+  modificar(m){
+    this.formGroup = this.fb.group({
+      name:m.name,
+      dni: m.dni
+    });
+    this.formGroup.controls['dni'].disable();
+  }
+
+  delete(m){
+    this.members.splice(this.members.findIndex(e=>e.dni==m.dni),1);
   }
 
 }

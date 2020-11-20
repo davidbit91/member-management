@@ -1,13 +1,13 @@
 <h1>Member Register</h1>
-<form [formGroup]='formGroup'>
+<form [formGroup]='formGroup' (ngSubmit)="saveRecord()">
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput name='name' formControlName='name'>
+    <input matInput  name='name'  formControlName='name'>
   </mat-form-field>
   <mat-form-field>
     <mat-label>DNI</mat-label>
     <input matInput name='dni' formControlName='dni'>
   </mat-form-field>
-  <button mat-raised-button (click)='saveRecord()'>Enviar</button>
-
+  <button mat-raised-button>Enviar</button>
 </form>
+
